@@ -1,0 +1,13 @@
+[package]
+name = "static-cond"
+version = "0.1.0"
+authors = ["Alex Burka <aburka@seas.upenn.edu>"]
+
+description = "Macro for performing comparisons during macro expansion"
+homepage = "https://github.com/durka/static-cond"
+repository = "https://github.com/durka/static-cond"
+readme = "README.md"
+license = "MIT"
+keywords = ["static", "if", "macro"]
+
+[dependencies]
