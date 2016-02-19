@@ -29,10 +29,11 @@
 #[macro_export]
 macro_rules! static_cond {
     // private rule to define and call the local macro
-    (@go $lhs:tt $rhs:tt $($arm:tt => $body:tt);*) => {{
+    (@go $lhs:tt $rhs:tt $arm1:tt $arm2:tt) => {{
         // note that the inner macro has no captures (it can't, because there's no way to escape `$`)
         macro_rules! __static_cond {
-            $($arm => $body);*
+            ($lhs $lhs) => $arm1;
+            ($lhs $rhs) => $arm2
         }
         
         __static_cond!($lhs $rhs)
@@ -48,17 +49,11 @@ macro_rules! static_cond {
     
     // we evaluate a conditional by generating a new macro (in an inner scope, so name shadowing is
     // not a big concern) and calling it
-    (if $lhs:tt == $rhs:tt { $($then:tt)* } else { $($els:tt)* }) => {
-        static_cond!(@go $lhs $rhs
-            ($lhs $lhs) => { $($then)* }; // if $lhs == $rhs, then $lhs $lhs == $lhs $rhs
-            ($lhs $rhs) => { $($els)* }
-        )
+    (if $lhs:tt == $rhs:tt $then:tt else $els:tt) => {
+        static_cond!(@go $lhs $rhs $then $els)
     };
-    (if $lhs:tt != $rhs:tt { $($then:tt)* } else { $($els:tt)* }) => {
-        static_cond!(@go $lhs $rhs
-            ($lhs $rhs) => { $($then)* }; // if $lhs != $rhs, then $lhs $rhs matches first
-            ($lhs $lhs) => { $($els)* }
-        )
+    (if $lhs:tt != $rhs:tt $then:tt else $els:tt) => {
+        static_cond!(@go $lhs $rhs $els $then)
     };
 }
 
