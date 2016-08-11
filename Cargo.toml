@@ -7,7 +7,7 @@ description = "Macro for performing comparisons during macro expansion"
 homepage = "https://github.com/durka/static-cond"
 repository = "https://github.com/durka/static-cond"
 readme = "README.md"
-license = "MIT"
+license = "MIT OR Apache-2.0"
 keywords = ["static", "if", "macro"]
 
 [dependencies]
