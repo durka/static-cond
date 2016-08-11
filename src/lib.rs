@@ -1,3 +1,5 @@
+#![no_std]
+
 /// Evaluates a conditional during macro expansion.
 /// 
 /// Currently limited to equality comparison. Can compare any two token trees. Can be nested.
