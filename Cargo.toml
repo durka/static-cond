@@ -1,9 +1,10 @@
 [package]
 name = "static-cond"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Alex Burka <aburka@seas.upenn.edu>"]
 
 description = "Macro for performing comparisons during macro expansion"
+categories = ["rust-patterns"]
 homepage = "https://github.com/durka/static-cond"
 repository = "https://github.com/durka/static-cond"
 readme = "README.md"
