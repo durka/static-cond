@@ -1,6 +1,6 @@
 [package]
 name = "static-cond"
-version = "0.2.1"
+version = "0.3.0"
 authors = ["Alex Burka <aburka@seas.upenn.edu>"]
 
 description = "Macro for performing comparisons during macro expansion"
